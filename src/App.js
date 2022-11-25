@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Cart from "./MyComponents/Cart";
+import Header from "./MyComponents/Header";
+import Home from "./MyComponents/Home";
+import faker from "faker";
+faker.seed(100)
 
 function App() {
+  const productsArray = [...Array(20)].map(() => ({
+    id: faker.datatype.uuid(),
+    name: faker.vehicle.vehicle(),
+    price: faker.commerce.price(),
+    image: faker.image.cats(),
+  }));
+  const [cart, setCart] = useState([]);
+  const [products]=useState(productsArray); 
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes className="">
+        <Route path="/"  element={<Home cart={cart} setCart={setCart} products={products}/>}  exact/> 
+
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
