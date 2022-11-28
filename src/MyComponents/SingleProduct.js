@@ -1,11 +1,6 @@
 import React from "react";
 
 const SingleProduct = ({ prod, cart, setCart }) => {
-//   console.log(prod);
-
-  // const addToCart = () =>{
-  //     setCart([...cart,prod])
-  // }
 
   return (
     <div className="singleProduct">

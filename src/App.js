@@ -7,22 +7,22 @@ import faker from "faker";
 faker.seed(100)
 
 function App() {
-  const productsArray = [...Array(20)].map(() => ({
-    id: faker.datatype.uuid(),
-    name: faker.vehicle.vehicle(),
-    price: faker.commerce.price(),
-    image: faker.image.cats(),
-  }));
-  const [cart, setCart] = useState([]);
-  const [products]=useState(productsArray); 
+  // const productsArray = [...Array(20)].map(() => ({
+  //   id: faker.datatype.uuid(),
+  //   name: faker.vehicle.vehicle(),
+  //   price: faker.commerce.price(),
+  //   image: faker.image.cats(),
+  // }));
+  // const [cart, setCart] = useState([]);
+  // const [products]=useState(productsArray); 
  
   return (
     <BrowserRouter>
       <Header />
       <Routes className="">
-        <Route path="/"  element={<Home cart={cart} setCart={setCart} products={products}/>}  exact/> 
+        <Route path="/"  element={<Home/>}  exact/> 
 
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );
